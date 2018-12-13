@@ -19,7 +19,7 @@
 	}
 	function connectAndPrint() {
 		if (device == null) {
-			navigator.usb.requestDevice({ filters: [{ vendorId: 0416 }] })
+			navigator.usb.requestDevice({ filters: [{ vendorId: 0x0416 }] })
 			.then(selectedDevice => {
 				device = selectedDevice;
 				console.log(device);
@@ -40,5 +40,37 @@
 	})
 	.catch(error => { console.log(error); });
 	</script>
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<button type='button' id='request-device'>test</button>
+	<script>
+	let button = document.getElementById('request-device');
+button.addEventListener('click', async () => {
+  let device;
+  try {
+    device = await navigator.usb.requestDevice({ filters: [{
+        vendorId: 0x016,
+    }]});
+  } catch () {
+    // No device was selected.
+  }
+
+  if (device !== undefined) {
+    // Add |device| to the UI.
+  }
+});
+		</script>
+		
 </body>
 </html>
